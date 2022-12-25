@@ -6,7 +6,7 @@
   <link href="https://yyzqlqc.github.io/atom.xml" rel="self"/>
   
   <link href="https://yyzqlqc.github.io/"/>
-  <updated>2022-12-25T14:01:20.430Z</updated>
+  <updated>2022-12-25T14:07:49.180Z</updated>
   <id>https://yyzqlqc.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>阆苑学子linux大作业视频讲解</title>
+    <link href="https://yyzqlqc.github.io/post/f1eb297c.html"/>
+    <id>https://yyzqlqc.github.io/post/f1eb297c.html</id>
+    <published>2022-12-25T14:07:49.180Z</published>
+    <updated>2022-12-25T14:07:49.180Z</updated>
+    
+    <content type="html"><![CDATA[<div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;">    <iframe src="//player.bilibili.com/player.html?aid=691516604&amp;bvid=BV1L24y1Q7qi&amp;cid=933444560&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position:absolute; height: 100%; width: 100%;"> </iframe></div>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;div style=&quot;position: relative; width: 100%; height: 0; padding-bottom: 75%;&quot;&gt;
+    &lt;iframe src=&quot;//player.bilibili.com/player.html?aid=691516</summary>
+      
+    
+    
+    
+    <category term="大学" scheme="https://yyzqlqc.github.io/categories/%E5%A4%A7%E5%AD%A6/"/>
+    
+    
+    <category term="大作业" scheme="https://yyzqlqc.github.io/tags/%E5%A4%A7%E4%BD%9C%E4%B8%9A/"/>
+    
+  </entry>
   
   <entry>
     <title>C语言操作符【超全面归纳解析】</title>
@@ -39,27 +64,6 @@
     
     
     <category term="C" scheme="https://yyzqlqc.github.io/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>阆苑学子linux大作业视频讲解</title>
-    <link href="https://yyzqlqc.github.io/post/f1eb297c.html"/>
-    <id>https://yyzqlqc.github.io/post/f1eb297c.html</id>
-    <published>2022-12-22T10:22:43.000Z</published>
-    <updated>2022-12-25T09:54:31.945Z</updated>
-    
-    <content type="html"><![CDATA[<div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;">    <iframe src="//player.bilibili.com/player.html?aid=691516604&amp;bvid=BV1L24y1Q7qi&amp;cid=933444560&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position:absolute; height: 100%; width: 100%;"> </iframe></div>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;div style=&quot;position: relative; width: 100%; height: 0; padding-bottom: 75%;&quot;&gt;
-    &lt;iframe src=&quot;//player.bilibili.com/player.html?aid=691516</summary>
-      
-    
-    
-    
     
   </entry>
   
