@@ -1,0 +1,991 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>树莓派PICO入门教程 | 青云君上</title><meta name="keywords" content="博客"><meta name="author" content="wu~~"><meta name="copyright" content="wu~~"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="树莓派 Pico 中文站 1.板子介绍 ：  微型usb连接器  microUSB    数据通信，提供动力 On-board LED 板载LED   在自己专用的GPIO端口    峰值上的唯一LED不会给出电源任何施加到上面的指示 boot select按钮 启动模式选择  引导加载程序 Debug Pins 调试连接器   pico支持两线串行通过这个进行调试 rp2040微控制器芯片">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树莓派PICO入门教程">
+<meta property="og:url" content="https://yyzqlqc.github.io/post/2b5d6bfb.html">
+<meta property="og:site_name" content="青云君上">
+<meta property="og:description" content="树莓派 Pico 中文站 1.板子介绍 ：  微型usb连接器  microUSB    数据通信，提供动力 On-board LED 板载LED   在自己专用的GPIO端口    峰值上的唯一LED不会给出电源任何施加到上面的指示 boot select按钮 启动模式选择  引导加载程序 Debug Pins 调试连接器   pico支持两线串行通过这个进行调试 rp2040微控制器芯片">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://bu.dusays.com/2022/12/27/63a9c77c38e7c.gif">
+<meta property="article:published_time" content="2022-12-26T16:13:06.561Z">
+<meta property="article:modified_time" content="2022-12-26T16:13:06.577Z">
+<meta property="article:author" content="wu~~">
+<meta property="article:tag" content="博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bu.dusays.com/2022/12/27/63a9c77c38e7c.gif"><link rel="shortcut icon" href="https://bu.dusays.com/2022/12/25/63a84e58200ed.jpg"><link rel="canonical" href="https://yyzqlqc.github.io/post/2b5d6bfb"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: wu~~","link":"链接: ","source":"来源: 青云君上","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '树莓派PICO入门教程',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-12-27 00:13:06'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/touxiang.css"> <link rel="stylesheet" href="/shuoshuo/css/shuo.css"/> <link rel="stylesheet" href="/css/youming.css">
+<link rel="stylesheet" href="/css/background.css"> <script src="/live2d-widget/autoload.js"></script> <link rel="stylesheet" href="/css/custom.css"  media="defer" onload="this.media='all'"> <link rel="stylesheet" href="/css/weibo.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-card-history/baiduhistory/css/main.css"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-clock/lib/clock.min.css" /><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://unpkg.zhimg.com/hexo-butterfly-wowjs/lib/animate.min.css" media="print" onload="this.media='screen'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="青云君上" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="bb8-loadingWarp"><div class="loading-bb8"></div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/loading.jpg" data-original="https://bu.dusays.com/2022/12/25/63a84df6d28fe.gif" onerror="onerror=null;src='https://bu.dusays.com/2022/12/25/63a8507496f44.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友人帐</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://bu.dusays.com/2022/12/27/63a9c77c38e7c.gif')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">青云君上   </a></span><div id="he-plugin-simple"></div><div id="none_space"></div><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友人帐</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">树莓派PICO入门教程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-12-26T16:13:06.561Z" title="发表于 2022-12-27 00:13:06">2022-12-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-12-26T16:13:06.577Z" title="更新于 2022-12-27 00:13:06">2022-12-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%A0%91%E8%8E%93%E6%B4%BE-%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派 - 树莓派</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>11分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="树莓派PICO入门教程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://pico.org.cn/">树莓派 Pico 中文站</a></p>
+<h1 id="1-板子介绍"><a href="#1-板子介绍" class="headerlink" title="1.板子介绍"></a>1.板子介绍</h1><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/loading.jpg" data-original="https://img-blog.csdnimg.cn/30fbdffa7f8247f399daaa6648710ccb.png" alt="![[Pasted image 20220920122543.png]]"></p>
+<p>：</p>
+<ul>
+<li>微型usb连接器  microUSB    数据通信，提供动力</li>
+<li>On-board LED 板载LED   在自己专用的GPIO端口    峰值上的唯一LED<br>不会给出电源任何施加到上面的指示</li>
+<li>boot select按钮 启动模式选择  引导加载程序</li>
+<li>Debug Pins 调试连接器   pico支持两线串行通过这个进行调试</li>
+<li>rp2040微控制器芯片</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/loading.jpg" data-original="https://img-blog.csdnimg.cn/d57ad3b8b77a4bceaa5a145827b5f810.png" alt="![[Pasted image 20220920122934.png]]"></p>
+<ul>
+<li>32位双核  arm-cortex m zero plus 芯片</li>
+<li>以48兆赫的的正常时钟速度运行，并可提升至133兆赫</li>
+<li>2兆字节的板载外部内存</li>
+<li>板载实时时钟</li>
+<li>板载温度传感器</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/loading.jpg" data-original="https://img-blog.csdnimg.cn/cd59e636f640492f8850f927966acefc.png" alt="![[Pasted image 20220920123303.png]]"></p>
+<ul>
+<li>要么使用引脚，要么表面安装</li>
+<li>8个接地点   其中一个是1个调试的一部分    接地点发布均匀</li>
+<li>所有的接地连接是方行焊盘而不是圆形焊盘</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/loading.jpg" data-original="https://img-blog.csdnimg.cn/06171eab73b445179912d3d2f07f0f74.png" alt="![[Pasted image 20220920124224.png]]"></p>
+<ul>
+<li>v总线和输出的微型usb电缆电压   连接5v    无连接v总线无输出   </li>
+<li>系统的输入功率   可以在2到5v的电压下运行该系统   尽管pico是3.3v逻辑机</li>
+<li>引脚36上的3.3输出是pico的内部电压调节器的3.3输出   可以用来驱动外部设备，但不要超过3亿</li>
+<li>3.3伏使能可启用  扳上的3.3伏电源   可以外部打开或关闭</li>
+<li>run连接     rp2040微控制器的使能连接    可以用作微控制器的复位</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/loading.jpg" data-original="https://img-blog.csdnimg.cn/379e2633554d419d85451c59adda2244.png" alt="![[Pasted image 20220920124407.png]]"></p>
+<ul>
+<li>26个裸露的gpio引脚</li>
+<li>内部的第27个TPIO引脚用于板载LED</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/loading.jpg" data-original="https://img-blog.csdnimg.cn/27ea7d79ce0d4914a4a2afa45557886d.png" alt="![[Pasted image 20220920124735.png]]"></p>
+<ul>
+<li>12位模数转换器</li>
+<li>3个内部模数转换器</li>
+<li>内部ADC用于温度传感器</li>
+<li>ADC vref   gnd   用于外部基准电压源    以提高模数转换器的精度</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/loading.jpg" data-original="https://img-blog.csdnimg.cn/e0892157ce9a4318b0166db4986be3b3.png" alt="![[Pasted image 20220920125113.png]]"></p>
+<ul>
+<li>2个I2C总线</li>
+<li>2个SPI总线</li>
+<li>2个URAT</li>
+<li>16个PWM通道</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/loading.jpg" data-original="https://img-blog.csdnimg.cn/ab59e47948e04263bed21502f01da16d.png" alt="![[Pasted image 20220920125351.png]]"></p>
+<ul>
+<li>普通的微控制器运行</li>
+<li>使用micro usb 端口通电</li>
+<li>使用电池供电，能够在低压2伏特的电压下工作</li>
+<li>作为usb 设备运行</li>
+<li>micro python  或 c</li>
+</ul>
+<h1 id="2-led开关"><a href="#2-led开关" class="headerlink" title="2.led开关"></a>2.led开关</h1><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/loading.jpg" data-original="https://img-blog.csdnimg.cn/fb8eb87ebb2742ff9787992cd6312edb.png" alt="![[Pasted image 20220920131020.png]]"></p>
+<ul>
+<li>26个gpio引脚，大多数的引脚支持带调制的脉冲</li>
+<li>3.3v的逻辑器件</li>
+<li>内置上拉电阻和下拉电阻，最大限度的减少所需的电路数量</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/loading.jpg" data-original="https://img-blog.csdnimg.cn/085626eae58645119f6e84c92802676b.png" alt="![[Pasted image 20220920132001.png]]"></p>
+<p>可以用3个红绿蓝LED<br>或者一个LED</p>
+<p>瞬间接触开关<br>一红一黑</p>
+<p>3LED 需要3个降压电阻   330欧姆的电阻</p>
+<p>引脚14（gpio引脚10）  连接到其中一个电阻器，连接到红色LED的阳极<br>引脚15（gpio引脚11）  连接到其中一个电阻器，连接到绿色LED的阳极<br>引脚19（gpio引脚14）  连接到其中一个电阻器，连接到蓝色LED的阳极</p>
+<p>引脚23  上的接地点；连接到LED上的公共阴极</p>
+<p>引脚4 （gpio引脚2）连接到黑色开关的一侧<br>引脚20 （gpio引脚15）连接到红色开关的一侧</p>
+<p>引脚3 接地 连接到黑色开关的另一侧</p>
+<p>pin引脚36   3.3v输出     连接到红色开关的另一侧</p>
+<p>循环亮3种不同颜色</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> machine
+<span class="token keyword">import</span> utime
+
+
+<span class="token comment"># 对应引脚并打开输出</span>
+led_red <span class="token operator">=</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>OUT<span class="token punctuation">)</span>
+led_green <span class="token operator">=</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">,</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>OUT<span class="token punctuation">)</span>
+led_blue <span class="token operator">=</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">(</span><span class="token number">14</span><span class="token punctuation">,</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>OUT<span class="token punctuation">)</span>
+
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+
+
+    led_red<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    led_green<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+    led_blue<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+    utime<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+
+
+     led_red<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+    led_green<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    led_blue<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+    utime<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+
+
+    led_red<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+    led_green<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+    led_blue<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    utime<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+
+    led_red<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    led_green<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    led_blue<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+    utime<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+
+    led_red<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    led_green<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+    led_blue<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    utime<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+
+    led_red<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+    led_green<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    led_blue<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    utime<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+
+    led_red<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    led_green<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    led_blue<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+    utime<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"End of Loop"</span><span class="token punctuation">)</span>
+
+    led_red<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+    led_green<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+    led_blue<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+    utime<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> 
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h1 id="4-开关控制："><a href="#4-开关控制：" class="headerlink" title="4.开关控制："></a>4.开关控制：</h1><pre class="line-numbers language-python" data-language="python"><code class="language-python">
+<span class="token keyword">import</span> machine  
+<span class="token keyword">import</span> utime    <span class="token comment">#时间有关的库</span>
+
+
+button_red <span class="token operator">=</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>IN<span class="token punctuation">,</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>PULL_DOWN<span class="token punctuation">)</span>   <span class="token comment"># gpio15 输入 下拉电阻，因为红灯的</span>
+                                                                      <span class="token comment"># 的一段是3.3v 所以一直保持低位</span>
+                                                                      <span class="token comment"># 当开关接通时，它将激活并将其拉高</span>
+button_black <span class="token operator">=</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>IN<span class="token punctuation">,</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>PULL_UP<span class="token punctuation">)</span>  <span class="token comment"># 上拉电阻，降低即开始</span>
+
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+
+     <span class="token keyword">if</span> button_red<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Red"</span><span class="token punctuation">)</span>
+
+
+
+
+     <span class="token keyword">if</span> button_black<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Black"</span><span class="token punctuation">)</span>
+
+    utime<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">0.25</span><span class="token punctuation">)</span>  <span class="token comment"># 延迟</span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+<h1 id="5-中断："><a href="#5-中断：" class="headerlink" title="5.中断："></a>5.中断：</h1><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> machine
+<span class="token keyword">import</span> utime
+
+
+led_red <span class="token operator">=</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>OUT<span class="token punctuation">)</span>
+led_green <span class="token operator">=</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">,</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>OUT<span class="token punctuation">)</span>
+
+
+led_red<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+led_green<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>  <span class="token comment"># 关灯</span>
+
+
+
+button_red <span class="token operator">=</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>IN<span class="token punctuation">,</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>PULL_DOWN<span class="token punctuation">)</span>   <span class="token comment"># 正常下拉电阻为低，除非按他就会拉高</span>
+
+
+
+<span class="token keyword">def</span> <span class="token function">in_handler</span><span class="token punctuation">(</span>pin<span class="token punctuation">)</span>
+     button_red<span class="token punctuation">.</span>irq<span class="token punctuation">(</span>handler<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span>  <span class="token comment"># 关闭此引脚的中断</span>
+     <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Interrupt Detected!"</span><span class="token punctuation">)</span>
+     led_red<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> 
+     led_green<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> 
+     utime<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>  <span class="token comment"># 休眠在中断不常见，这是个示范</span>
+     led_red<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+     button_red<span class="token punctuation">.</span>irq<span class="token punctuation">(</span>handler<span class="token operator">=</span>int_handler<span class="token punctuation">)</span>  <span class="token comment"># 重新设置程序，然后才能再次工作</span>
+
+
+button_red<span class="token punctuation">.</span>irq<span class="token punctuation">(</span>trigger<span class="token operator">=</span>machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>IRQ_RISING<span class="token punctuation">,</span> handler<span class="token operator">=</span>int_handler<span class="token punctuation">)</span>
+<span class="token comment"># 修复中断请求  触发中断  我们在上升信号时触发它（低到高）  此时传入一个被称为中断处理程序的函数</span>
+<span class="token comment"># 每次按下按钮会有一个中断，就调用这个函数</span>
+
+
+<span class="token comment"># 不被中断时</span>
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+
+      led_green<span class="token punctuation">.</span>toggle<span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment"># 切换函数 ，获取输出状态并将其反转</span>
+        <span class="token comment"># led将开或关，就反转成</span>
+      utime<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h1 id="6-按按钮灯循环亮："><a href="#6-按按钮灯循环亮：" class="headerlink" title="6.按按钮灯循环亮："></a>6.按按钮灯循环亮：</h1><pre class="line-numbers language-python" data-language="python"><code class="language-python">
+<span class="token keyword">import</span> machine
+<span class="token keyword">import</span> utime
+
+<span class="token comment"># 对应引脚并打开输出</span>
+led_red <span class="token operator">=</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>OUT<span class="token punctuation">)</span>
+led_green <span class="token operator">=</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">,</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>OUT<span class="token punctuation">)</span>
+led_blue <span class="token operator">=</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">(</span><span class="token number">14</span><span class="token punctuation">,</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>OUT<span class="token punctuation">)</span>
+
+led_red<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+led_green<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+led_blue<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+
+button_black <span class="token operator">=</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>IN<span class="token punctuation">,</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>PULL_UP<span class="token punctuation">)</span>  <span class="token comment"># 上拉电阻，降低即开始</span>
+
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+
+     <span class="token keyword">if</span> button_black<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>   <span class="token comment">#  按下按钮，值为0</span>
+
+                led_red<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+			    led_green<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+			    led_blue<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+			    utime<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+			
+			
+			    led_red<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+			    led_green<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+			    led_blue<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+			    utime<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+			
+			
+			    led_red<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+			    led_green<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+			    led_blue<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+
+
+                led_red<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+				led_green<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+				led_blue<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+
+
+
+
+			    
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+<h1 id="7-模拟输入："><a href="#7-模拟输入：" class="headerlink" title="7.模拟输入："></a>7.模拟输入：</h1><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/loading.jpg" data-original="https://img-blog.csdnimg.cn/b1b576fd6bfc4c32b4884ce56c90f7ea.png" alt="![[Pasted image 20220920232711.png]]"></p>
+<ul>
+<li>3个内部模数转换器</li>
+<li>12位adc</li>
+<li>模拟基准电压源   模拟接地引脚     可与外部基准电压源配合使用</li>
+</ul>
+<p>最简单组件是有效直径</p>
+<p>这里使用10k的直线壶</p>
+<ul>
+<li>引脚23  连接到patometer的一端</li>
+<li>引脚31  gpio26   模拟转换器0  连接到patometer的一端</li>
+<li>引脚36  3.3v输出   连接到patometer的一端</li>
+</ul>
+<p>代码</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">
+<span class="token keyword">import</span> machine
+<span class="token keyword">import</span> utime
+
+
+<span class="token comment"># 定义一个称为电位计的变量，并将其定义为模拟输入，然后使用库的ADC功能</span>
+potentiometer <span class="token operator">=</span> machine<span class="token punctuation">.</span>ADC<span class="token punctuation">(</span><span class="token number">26</span><span class="token punctuation">)</span>
+
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>potentiometer<span class="token punctuation">.</span>read_u16<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>   <span class="token comment"># 打印电位值，打印模数转换器的输出值</span>
+                                      <span class="token comment"># 使用的是读出无符号16位输出，16位实际从0到65535</span>
+                                      <span class="token comment"># 但是返回的值可能不是你期待的值</span>
+                                      <span class="token comment"># 当我们需要将其传递给其它操作时</span>
+                                      <span class="token comment"># 例如当我们使用PWM时，只要我们将所有内容</span>
+                                      <span class="token comment"># 保持为无符号的16位数字，就不需要担心映射命令之类的</span>
+                                      <span class="token comment"># 事情</span>
+    utime<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
+<h1 id="8-PWM-Control"><a href="#8-PWM-Control" class="headerlink" title="8.PWM Control"></a>8.PWM Control</h1><p>从电位器中读取值用作PWM信号的控制<br>把信号馈送到rgbled的红色部分</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> machine
+<span class="token keyword">import</span> utime
+
+
+
+led_red <span class="token operator">=</span> machine<span class="token punctuation">.</span>PWM<span class="token punctuation">(</span>machine<span class="token punctuation">.</span>Pin<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 定于led为PWM输出</span>
+potentiomemter <span class="token operator">=</span> machine<span class="token punctuation">.</span>ADC<span class="token punctuation">(</span><span class="token number">26</span><span class="token punctuation">)</span>    <span class="token comment"># 定义一个称为电位计的变量，并将其定义为模拟输入，然后使用库的ADC功能</span>
+
+
+
+
+led_red<span class="token punctuation">.</span>freq<span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span>  <span class="token comment"># 工作频率为1000赫兹</span>
+
+
+
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+    led_red<span class="token punctuation">.</span>duty_u16<span class="token punctuation">(</span>potentiomemter<span class="token punctuation">.</span>read_u16<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 占空比是一个无符号的16位整数</span>
+                                                 <span class="token comment"># 其值是从读取电位器中的无符号的16位整数中获得的</span>
+
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h1 id="9-OLED"><a href="#9-OLED" class="headerlink" title="9.OLED"></a>9.OLED</h1><ul>
+<li>PICO内部I2c总线零号</li>
+<li>两个I2C总线</li>
+<li>只需要写入</li>
+<li>只需3.3v</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/loading.jpg" data-original="https://img-blog.csdnimg.cn/42e7372086f44ebca26fc36391a279cd.png" alt="![[Pasted image 20220921004505.png]]"></p>
+<p>驱动显示器的脚本：</p>
+<p>需要导入这个oled 的库</p>
+<p>进入工具的包管理下载对应的包<br><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/loading.jpg" data-original="https://img-blog.csdnimg.cn/44e4ab2856124f779afc77c82db293cd.png" alt="![[Pasted image 20220921005140.png]]"></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">
+<span class="token keyword">import</span> machine
+<span class="token keyword">import</span> utime
+
+sda <span class="token operator">=</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span>
+scl <span class="token operator">=</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">(</span><span class="token number">21</span><span class="token punctuation">)</span>
+
+
+i2c <span class="token operator">=</span> machine<span class="token punctuation">.</span>I2C<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> sda <span class="token operator">=</span> sda<span class="token punctuation">,</span> scl <span class="token operator">=</span> scl<span class="token punctuation">,</span> freq <span class="token operator">=</span> <span class="token number">400000</span><span class="token punctuation">)</span> 
+<span class="token comment"># 设置I2C对象，（使用哪个总线0还是1，赋值，i2c所在总线的频率  ）</span>
+
+
+
+<span class="token comment"># 使用库</span>
+<span class="token keyword">from</span> ssd1306 <span class="token keyword">import</span>  SSD1306_I2C
+oled <span class="token operator">=</span> SSD1306_I2C<span class="token punctuation">(</span><span class="token number">128</span><span class="token punctuation">,</span> <span class="token number">32</span><span class="token punctuation">,</span> i2c<span class="token punctuation">)</span>  
+<span class="token comment"># 不用给ssd1306分配i2c,因为这是一个固定的地址，内置在库中，不同的显示参数</span>
+
+<span class="token comment"># 在屏幕上打印出文本</span>
+oled<span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token string">'Welcome to the'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+oled<span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token string">'Pi Pico'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span>
+oled<span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token string">'Display Demo'</span><span class="token punctuation">,</span> <span class="token number">0</span> <span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">)</span>
+oled<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
+utime<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>  
+
+
+oled<span class="token punctuation">.</span>fill<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment"># 填满显示屏</span>
+oled<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
+utime<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+oled<span class="token punctuation">.</span>fill<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>   <span class="token comment"># 清空显示屏</span>
+oled<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+<span class="token comment"># 循环滚动</span>
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+  oled<span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token string">"Hello  World"</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+  <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">164</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+  oled<span class="token punctuation">.</span>sroll<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>    <span class="token comment">#滚动一次只移动一个像素</span>
+  oled<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
+  utime<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">0.01</span><span class="token punctuation">)</span>
+
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
+<h1 id="10-H桥控制器小型直流电机"><a href="#10-H桥控制器小型直流电机" class="headerlink" title="10.H桥控制器小型直流电机"></a>10.H桥控制器小型直流电机</h1><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/loading.jpg" data-original="https://img-blog.csdnimg.cn/378a0b5675184150857f293f7af7ab99.png" alt="![[Pasted image 20220921011209.png]]"></p>
+<ul>
+<li>gpio上的PWM调制脉冲来控制直流电机的速度</li>
+<li>使用MOSFET 的H桥驱动器</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/loading.jpg" data-original="https://img-blog.csdnimg.cn/2554536940b54e2ba6b178ccb0ad2529.png" alt="![[Pasted image 20220921011512.png]]"></p>
+<p>ADC电机 6v<br>tb 6612 fng 8桥电机驱动器  双批次桥， 但是只使用一面<br>6v 的电源</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">
+<span class="token keyword">import</span> machine
+<span class="token keyword">import</span> utime
+
+
+<span class="token comment"># 设置电位计，作为模拟1到数字输入</span>
+potentiometer <span class="token operator">=</span> machine<span class="token punctuation">.</span>ADC<span class="token punctuation">(</span><span class="token number">26</span><span class="token punctuation">)</span>
+
+
+<span class="token comment"># 设置H桥控制器引脚</span>
+<span class="token comment"># AI1,2控制电机的旋转方向</span>
+<span class="token comment"># PWMa控制马达的速度</span>
+mtr_AI1 <span class="token operator">=</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>OUT<span class="token punctuation">)</span>
+mtr_AI2 <span class="token operator">=</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">,</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>OUT<span class="token punctuation">)</span>
+mtr_PWMa <span class="token operator">=</span> machine<span class="token punctuation">.</span>PWM<span class="token punctuation">(</span>machine<span class="token punctuation">.</span>Pin<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+
+
+button_red <span class="token operator">=</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>IN<span class="token punctuation">,</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>PULL_DOWN<span class="token punctuation">)</span>  <span class="token comment"># 红色按钮下拉电阻</span>
+button_black <span class="token operator">=</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>IN<span class="token punctuation">,</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>PULL_UP<span class="token punctuation">)</span>    <span class="token comment"># 黑色按钮上拉电阻</span>
+
+led_red <span class="token operator">=</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>OUT<span class="token punctuation">)</span>
+led_green <span class="token operator">=</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">,</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>OUT<span class="token punctuation">)</span>
+led_blue <span class="token operator">=</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">(</span><span class="token number">14</span><span class="token punctuation">,</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>OUT<span class="token punctuation">)</span>
+
+
+
+led_red<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+led_green<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+led_blue<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+
+mtr_PWMa<span class="token punctuation">.</span>freq<span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span>  <span class="token comment">#输入的PWM频率1设置为50赫兹，猜测</span>
+mtr_AI1<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>   <span class="token comment"># 让马达以特定的方向旋转</span>
+mtr_AI1<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+
+
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+
+<span class="token comment"># 当驱动LED时我们采用的是PWM的占空比，并将其与电位计的读数相匹配</span>
+      mtr_PWMa<span class="token punctuation">.</span>duty_u16<span class="token punctuation">(</span>potentiometer<span class="token punctuation">.</span>read_u16<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+
+     <span class="token keyword">if</span> button_red<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+         mtr_AI1<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+         mtr_AI2<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+         led_red<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+         led_green<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+         led_blue<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+     
+     <span class="token keyword">if</span> button_black<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+         mtr_AI1<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+         mtr_AI2<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+         led_red<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+         led_green<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+         led_blue<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+
+    utime<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">0.25</span><span class="token punctuation">)</span>   <span class="token comment"># 防反跳按钮</span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h1 id="11-用上全部"><a href="#11-用上全部" class="headerlink" title="11.用上全部"></a>11.用上全部</h1><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> machine
+<span class="token keyword">import</span> utime
+
+
+<span class="token comment"># 设置电位计，作为模拟1到数字输入</span>
+potentiometer <span class="token operator">=</span> machine<span class="token punctuation">.</span>ADC<span class="token punctuation">(</span><span class="token number">26</span><span class="token punctuation">)</span>
+
+
+<span class="token comment"># 设置H桥控制器引脚</span>
+<span class="token comment"># AI1,2控制电机的旋转方向</span>
+<span class="token comment"># PWMa控制马达的速度</span>
+mtr_AI1 <span class="token operator">=</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">,</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>OUT<span class="token punctuation">)</span>
+mtr_AI2 <span class="token operator">=</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">,</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>OUT<span class="token punctuation">)</span>
+mtr_PWMa <span class="token operator">=</span> machine<span class="token punctuation">.</span>PWM<span class="token punctuation">(</span>machine<span class="token punctuation">.</span>Pin<span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+
+
+button_red <span class="token operator">=</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>IN<span class="token punctuation">,</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>PULL_DOWN<span class="token punctuation">)</span>  <span class="token comment"># 红色按钮下拉电阻</span>
+button_black <span class="token operator">=</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>IN<span class="token punctuation">,</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>PULL_UP<span class="token punctuation">)</span>    <span class="token comment"># 黑色按钮上拉电阻</span>
+
+led_red <span class="token operator">=</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>OUT<span class="token punctuation">)</span>
+led_green <span class="token operator">=</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">,</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>OUT<span class="token punctuation">)</span>
+led_blue <span class="token operator">=</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">(</span><span class="token number">14</span><span class="token punctuation">,</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">.</span>OUT<span class="token punctuation">)</span>
+
+
+sda <span class="token operator">=</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span>
+scl <span class="token operator">=</span> machine<span class="token punctuation">.</span>Pin<span class="token punctuation">(</span><span class="token number">21</span><span class="token punctuation">)</span>
+
+
+
+i2c <span class="token operator">=</span> machine<span class="token punctuation">.</span>I2C<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> sda <span class="token operator">=</span> sda<span class="token punctuation">,</span> scl <span class="token operator">=</span> scl<span class="token punctuation">,</span> freq <span class="token operator">=</span> <span class="token number">400000</span><span class="token punctuation">)</span> 
+<span class="token comment"># 设置I2C对象，（使用哪个总线0还是1，赋值，i2c所在总线的频率  ）</span>
+
+
+
+<span class="token comment"># 使用库</span>
+<span class="token keyword">from</span> ssd1306 <span class="token keyword">import</span>  SSD1306_I2C
+oled <span class="token operator">=</span> SSD1306_I2C<span class="token punctuation">(</span><span class="token number">128</span><span class="token punctuation">,</span> <span class="token number">32</span><span class="token punctuation">,</span> i2c<span class="token punctuation">)</span>  
+<span class="token comment"># 不用给ssd1306分配i2c,因为这是一个固定的地址，内置在库中，不同的显示参数</span>
+
+oled<span class="token punctuation">.</span>text<span class="token punctuation">(</span><span class="token string">'Pico Motor Test'</span><span class="token punctuation">,</span> <span class="token number">0</span> <span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span>
+oled<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
+utime<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>  
+
+
+
+
+led_red<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+led_green<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+led_blue<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+utime<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+
+
+led_red<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+led_green<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+led_blue<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+utime<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+
+
+led_red<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+led_green<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+led_blue<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+
+<span class="token comment"># 设置电机频率的值</span>
+mtr_PWMa<span class="token punctuation">.</span>freq<span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span>  <span class="token comment">#输入的PWM频率1设置为50赫兹，猜测</span>
+mtr_AI1<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>   <span class="token comment"># 让马达以特定的方向旋转</span>
+mtr_AI1<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+
+
+
+
+
+
+
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+
+<span class="token comment">#  500计算速度值，在oled上创建条形图</span>
+    speedvalue <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>potentiometer<span class="token punctuation">.</span>read_u16<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">500</span><span class="token punctuation">)</span>
+
+
+<span class="token comment"># 当驱动LED时我们采用的是PWM的占空比，并将其与电位计的读数相匹配</span>
+      mtr_PWMa<span class="token punctuation">.</span>duty_u16<span class="token punctuation">(</span>potentiometer<span class="token punctuation">.</span>read_u16<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+
+    <span class="token keyword">if</span> button_red<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+         mtr_AI1<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+         mtr_AI2<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+         led_red<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+         led_green<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+         led_blue<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+     
+    <span class="token keyword">if</span> button_black<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+         mtr_AI1<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+         mtr_AI2<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+         led_red<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+         led_green<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+         led_blue<span class="token punctuation">.</span>value<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+    
+
+	oled<span class="token punctuation">.</span>fill_rect<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">15</span><span class="token punctuation">,</span> speedvalue<span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment"># oled上创建一个矩形，1,15经常启动的位置，速度值，25用来确定长度</span>
+	 <span class="token comment"># 11展示出来1</span>
+	oled<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span>
+	oled<span class="token punctuation">.</span>fill_rect<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">15</span><span class="token punctuation">,</span> speedvalue<span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>  <span class="token comment"># </span>
+	utime<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">0.25</span><span class="token punctuation">)</span>
+
+
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.bilibili.com/video/BV1tr4y1N7pv/?vd_source=ee1eea60088211b9fa51cf93a31423da">视频教程</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://yyzqlqc.github.io">wu~~</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yyzqlqc.github.io/post/2b5d6bfb.html">https://yyzqlqc.github.io/post/2b5d6bfb.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yyzqlqc.github.io" target="_blank">青云君上</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://bu.dusays.com/2022/12/27/63a9c77c38e7c.gif" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://bu.dusays.com/2022/12/25/63a850ab19b37.jpg" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/loading.jpg" data-original="https://bu.dusays.com/2022/12/25/63a850ab19b37.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://bu.dusays.com/2022/12/25/63a850ad5d1c9.jpg" rel="external nofollow noreferrer" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/loading.jpg" data-original="https://bu.dusays.com/2022/12/25/63a850ad5d1c9.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/post/27fb5d91.html"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/loading.jpg" data-original="https://bu.dusays.com/2022/12/27/63a9c65748b15.jpg" onerror="onerror=null;src='https://bu.dusays.com/2022/12/25/63a85045db66a.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">保姆级Obsidian学习教程【超完整，小白必备】</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div id="comment-switch"><span class="first-comment">Valine</span><span class="switch-btn"></span><span class="second-comment">Disqus</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div><div><div id="disqus_thread"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/loading.jpg" data-original="https://bu.dusays.com/2022/12/25/63a84df6d28fe.gif" onerror="this.onerror=null;this.src='https://bu.dusays.com/2022/12/25/63a8507496f44.gif'" alt="avatar"/></div><div class="author-info__name">wu~~</div><div class="author-info__description">所谓的光辉岁月，并不是后来闪耀的日子，而是无人问津时，你对梦想的偏执。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/yyzqlqc"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/yyzqlqc" rel="external nofollow noreferrer" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/2327094405@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://blog.csdn.net/weixin_51684355?type=blog" rel="external nofollow noreferrer" target="_blank" title="CSDN"><i class="fa fa-book-open"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">真実はいつもひとつ</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E6%9D%BF%E5%AD%90%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">1.板子介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-led%E5%BC%80%E5%85%B3"><span class="toc-number">2.</span> <span class="toc-text">2.led开关</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%BC%80%E5%85%B3%E6%8E%A7%E5%88%B6%EF%BC%9A"><span class="toc-number">3.</span> <span class="toc-text">4.开关控制：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E4%B8%AD%E6%96%AD%EF%BC%9A"><span class="toc-number">4.</span> <span class="toc-text">5.中断：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E6%8C%89%E6%8C%89%E9%92%AE%E7%81%AF%E5%BE%AA%E7%8E%AF%E4%BA%AE%EF%BC%9A"><span class="toc-number">5.</span> <span class="toc-text">6.按按钮灯循环亮：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-%E6%A8%A1%E6%8B%9F%E8%BE%93%E5%85%A5%EF%BC%9A"><span class="toc-number">6.</span> <span class="toc-text">7.模拟输入：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-PWM-Control"><span class="toc-number">7.</span> <span class="toc-text">8.PWM Control</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-OLED"><span class="toc-number">8.</span> <span class="toc-text">9.OLED</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-H%E6%A1%A5%E6%8E%A7%E5%88%B6%E5%99%A8%E5%B0%8F%E5%9E%8B%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA"><span class="toc-number">9.</span> <span class="toc-text">10.H桥控制器小型直流电机</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11-%E7%94%A8%E4%B8%8A%E5%85%A8%E9%83%A8"><span class="toc-number">10.</span> <span class="toc-text">11.用上全部</span></a></li></ol></div></div><div class="card-widget card-weibo"><div class="card-content"><div class="item-headline"><i class="fab fa-weibo"></i><span>微博热搜</span></div><div id="weibo-container"><div class="weibo-list"></div></div></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/post/2b5d6bfb.html" title="树莓派PICO入门教程"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/loading.jpg" data-original="https://bu.dusays.com/2022/12/27/63a9c77c38e7c.gif" onerror="this.onerror=null;this.src='https://bu.dusays.com/2022/12/25/63a85045db66a.jpg'" alt="树莓派PICO入门教程"/></a><div class="content"><a class="title" href="/post/2b5d6bfb.html" title="树莓派PICO入门教程">树莓派PICO入门教程</a><time datetime="2022-12-26T16:13:06.561Z" title="发表于 2022-12-27 00:13:06">2022-12-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/27fb5d91.html" title="保姆级Obsidian学习教程【超完整，小白必备】"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/loading.jpg" data-original="https://bu.dusays.com/2022/12/27/63a9c65748b15.jpg" onerror="this.onerror=null;this.src='https://bu.dusays.com/2022/12/25/63a85045db66a.jpg'" alt="保姆级Obsidian学习教程【超完整，小白必备】"/></a><div class="content"><a class="title" href="/post/27fb5d91.html" title="保姆级Obsidian学习教程【超完整，小白必备】">保姆级Obsidian学习教程【超完整，小白必备】</a><time datetime="2022-12-26T16:06:24.361Z" title="发表于 2022-12-27 00:06:24">2022-12-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/d66e415b.html" title="C语言操作符【超全面归纳解析】"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/loading.jpg" data-original="https://bu.dusays.com/2022/12/25/63a8548ea3f8a.gif" onerror="this.onerror=null;this.src='https://bu.dusays.com/2022/12/25/63a85045db66a.jpg'" alt="C语言操作符【超全面归纳解析】"/></a><div class="content"><a class="title" href="/post/d66e415b.html" title="C语言操作符【超全面归纳解析】">C语言操作符【超全面归纳解析】</a><time datetime="2022-12-25T16:56:29.035Z" title="发表于 2022-12-26 00:56:29">2022-12-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/443f0b3e.html" title="这是一篇水文"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/loading.jpg" data-original="https://bu.dusays.com/2022/12/25/63a85afb4a5f5.jpg" onerror="this.onerror=null;this.src='https://bu.dusays.com/2022/12/25/63a85045db66a.jpg'" alt="这是一篇水文"/></a><div class="content"><a class="title" href="/post/443f0b3e.html" title="这是一篇水文">这是一篇水文</a><time datetime="2022-12-25T14:15:38.891Z" title="发表于 2022-12-25 22:15:38">2022-12-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/4a17b156.html" title="Hello World"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/loading.jpg" data-original="https://bu.dusays.com/2022/12/25/63a8511d511bc.png" onerror="this.onerror=null;this.src='https://bu.dusays.com/2022/12/25/63a85045db66a.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/post/4a17b156.html" title="Hello World">Hello World</a><time datetime="2022-12-25T14:13:40.662Z" title="发表于 2022-12-25 22:13:40">2022-12-25</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://bu.dusays.com/2022/12/27/63a9c77c38e7c.gif')"><div id="footer-wrap"><div class="copyright">&copy;2022 By wu~~</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">欢迎小友</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'YJ8KgFiamjHufO5VxfAFrSG3-gzGzoHsz',
+      appKey: 'DTwWnDt3q787LyMNu54WqO4h',
+      avatar: 'robohash',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: true
+    }, ))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script><script>function loadDisqus () {
+  var disqus_config = function () {
+    this.page.url = 'https://yyzqlqc.github.io/post/2b5d6bfb.html'
+    this.page.identifier = '/post/2b5d6bfb.html'
+    this.page.title = '树莓派PICO入门教程'
+  };
+
+  window.disqusReset = () => {
+    DISQUS.reset({
+      reload: true,
+      config: disqus_config
+    })
+  }
+
+  if (window.DISQUS) disqusReset()
+  else {
+    (function() { 
+      var d = document, s = d.createElement('script');
+      s.src = 'https://.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  }
+
+  document.getElementById('darkmode').addEventListener('click', () => {
+    setTimeout(() => window.disqusReset(), 200)
+  })
+}
+
+if ('Valine' === 'Disqus' || !true) {
+  if (true) btf.loadComment(document.getElementById('disqus_thread'), loadDisqus)
+  else loadDisqus()
+} else {
+  function loadOtherComment () {
+    loadDisqus()
+  }
+}
+</script></div><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script> <script src="/js/weather.js"></script>
+<script src="/js/weibo.js"></script> <script src="/js/sakura.js"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/weilain/cdn-photo/js/jquery.min.js"></script>
+<div class="aplayer no-destroy" data-id="7808614822" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-preload="none" data-autoplay="false" muted></div>
+<script src="https://cdn.jsdelivr.net/npm/artitalk"></script> <script src="/shuoshuo/js/shuo.js"></script> <script src="/shuoshuo/js/artitalkkey.js"></script> <script src="https://gcore.jsdelivr.net/gh/xiabo2/CDN@latest/fishes.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="true" data-text="富强,民主,文明,和谐,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="true" async="async"></script><script>window.$crisp = [];
+window.CRISP_WEBSITE_ID = "";
+(function () {
+  d = document;
+  s = d.createElement("script");
+  s.src = "https://client.crisp.chat/l.js";
+  s.async = 1;
+  d.getElementsByTagName("head")[0].appendChild(s);
+})();
+$crisp.push(["safe", true])
+
+if (false) {
+  $crisp.push(["do", "chat:hide"])
+  $crisp.push(["on", "chat:closed", function() {
+    $crisp.push(["do", "chat:hide"])
+  }])
+  var chatBtnFn = () => {
+    var chatBtn = document.getElementById("chat_btn")
+    chatBtn.addEventListener("click", function(){
+      $crisp.push(["do", "chat:show"])
+      $crisp.push(["do", "chat:open"])
+
+    });
+  }
+  chatBtnFn()
+} else {
+  if (false) {
+    function chatBtnHide () {
+      $crisp.push(["do", "chat:hide"])
+    }
+    function chatBtnShow () {
+      $crisp.push(["do", "chat:show"])
+    }
+  }
+}</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="/music/"]):not([href="/no-pjax/"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>function history_calendar_injector_config(){
+                var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+                var item_html = '<div class="card-widget card-history"><div class="card-content"><div class="item-headline"><i class="fas fa-clock fa-spin"></i><span>那年今日</span></div><div id="history-baidu" style="height: 100px;overflow: hidden"><div class="history_swiper-container" id="history-container" style="width: 100%;height: 100%"><div class="swiper-wrapper" id="history_container_wrapper" style="height:20px"></div></div></div></div>';
+                console.log('已挂载history_calendar')
+                // parent_div_git.innerHTML=item_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",item_html) // 有报错，但不影响使用(支持pjax跳转)
+            }if( document.getElementsByClassName('sticky_layout')[0] && (location.pathname ==='all'|| 'all' ==='all')){
+
+            history_calendar_injector_config()
+        } </script><script data-pjax  src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script><script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-card-history/baiduhistory/js/main.js"></script><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/loading.jpg" data-original="https://npm.elemecdn.com/hexo-butterfly-clock/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var qweather_key = 'b16a1fa0e63c46a4b8f28abfb06ae3fe';
+  var gaud_map_key = 'e2b04289e870b005374ee030148d64fd&s=rsv3';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '112.6534116,27.96920845';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax src="https://npm.elemecdn.com/hexo-butterfly-clock/lib/clock.min.js"></script><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><div id="ghbdages" style="overflow:hidden;max-height:90px;height:auto;text-align:center;margin-top:10px"><div class="swiper-wrapper"><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://hexo.io/" rel="external nofollow noreferrer" style="margin-inline:5px" title="博客框架为Hexo_v5.4.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/loading.jpg" data-original="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" rel="external nofollow noreferrer" style="margin-inline:5px" title="主题版本Butterfly_v3.8.2"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/loading.jpg" data-original="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" rel="external nofollow noreferrer" style="margin-inline:5px" title="本站使用JsDelivr为静态资源提供CDN加速"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/loading.jpg" data-original="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://vercel.com/" rel="external nofollow noreferrer" style="margin-inline:5px" title="本站采用双线部署，默认线路托管于Vercel"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/loading.jpg" data-original="https://img.shields.io/badge/Hosted-Vercel-brightgreen?style=flat&amp;logo=Vercel" alt=""/></a><a class="github-badge" target="_blank" href="https://vercel.com/" rel="external nofollow noreferrer" style="margin-inline:5px" title="本站采用双线部署，联通线路托管于Coding"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/loading.jpg" data-original="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&amp;logo=Codio" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" rel="external nofollow noreferrer" style="margin-inline:5px" title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/loading.jpg" data-original="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a></div><div class="swiper-slide"><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" style="margin-inline:5px" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/loading.jpg" data-original="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></div></div></div><style>a.github-badge:hover:before {display:none}</style>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="/js/runtime.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-footer-beautify/lib/swiperbdage_init.min.js"></script><div class="js-pjax"><script async="async">var arr = document.getElementsByClassName('recent-post-item');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '2s');
+    arr[i].setAttribute('data-wow-delay', '1s');
+    arr[i].setAttribute('data-wow-offset', '100');
+    arr[i].setAttribute('data-wow-iteration', '2');
+  }</script><script async="async">var arr = document.getElementsByClassName('card-widget');
+for(var i = 0;i<arr.length;i++){
+    arr[i].classList.add('wow');
+    arr[i].classList.add('animate__zoomIn');
+    arr[i].setAttribute('data-wow-duration', '');
+    arr[i].setAttribute('data-wow-delay', '');
+    arr[i].setAttribute('data-wow-offset', '');
+    arr[i].setAttribute('data-wow-iteration', '');
+  }</script></div><script defer src="https://unpkg.zhimg.com/hexo-butterfly-wowjs/lib/wow.min.js"></script><script defer src="https://unpkg.zhimg.com/hexo-butterfly-wowjs/lib/wow_init.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":300,"height":600},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script>
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script><script>!function(r){r.imageLazyLoadSetting.processImages=t;var e=r.imageLazyLoadSetting.isSPA,n=r.imageLazyLoadSetting.preloadRatio||1,c=a();function a(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(){e&&(c=a());for(var t,o=0;o<c.length;o++)0<=(t=(t=c[o]).getBoundingClientRect()).bottom&&0<=t.left&&t.top<=(r.innerHeight*n||document.documentElement.clientHeight*n)&&function(){var t,e,n,a,i=c[o];e=function(){c=c.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(n=new Image,a=t.getAttribute("data-original"),n.onload=function(){t.src=a,t.removeAttribute("data-original"),e&&e()},t.src!==a&&(n.src=a))}()}function i(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",i),r.addEventListener("resize",i),r.addEventListener("orientationchange",i)}(this);</script></body></html><script type="text/javascript" src="/js/crash_cheat.js"></script>
