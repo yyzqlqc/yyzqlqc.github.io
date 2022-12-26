@@ -6,7 +6,7 @@
   <link href="https://yyzqlqc.github.io/atom.xml" rel="self"/>
   
   <link href="https://yyzqlqc.github.io/"/>
-  <updated>2022-12-26T16:13:06.577Z</updated>
+  <updated>2022-12-26T16:16:02.576Z</updated>
   <id>https://yyzqlqc.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>保姆级Obsidian学习教程【超完整，小白必备】</title>
+    <link href="https://yyzqlqc.github.io/post/27fb5d91.html"/>
+    <id>https://yyzqlqc.github.io/post/27fb5d91.html</id>
+    <published>2022-12-26T16:16:02.572Z</published>
+    <updated>2022-12-26T16:16:02.576Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ul><li>本篇文章学习视频来源：             <a href="https://www.bilibili.com/video/BV1MF411W7eD/?spm_id_from=333.788&amp;vd_source=ee1eea60088211b9fa51cf93a31423da">沙牛obsidian优质课程</a></li><li>学       习         软        件：                      <a href="https://obsidian.md/">obsidian</a></li><li>课   程   对   应   资    源：                      <a href="https://pan.sandox.top/s/O3pIW?path=/">云盘资源</a></li><li>说                                明：  Obsidian是基于<strong>Markdown文件</strong>的<strong>本地</strong>知识管理软件，并且开发者承诺Obsidian对于个人使用者<strong>永久免费</strong>。不同于云端笔记，ob在本地以文件夹的数据保存方式，更利于保存笔记，防止在云端的笔记丢失的情况，双链和丰富的插件功能能助使用者构建庞大的知识网络体系。</li></ul><hr><h1 id="学习网站："><a href="#学习网站：" class="headerlink" title="学习网站："></a>学习网站：</h1><blockquote><p><a href="https://github.com/Jackiexiao/obsidian">obsidian中文帮助手册</a></p></blockquote><blockquote><p><a href="https://help.obsidian.md/Advanced+topics/Community+plugins">官网帮助手册</a></p></blockquote><blockquote><p><a href="https://www.zybuluo.com/codeep/note/163962">Cmd Markdown 公式指导手册</a></p></blockquote><blockquote><p><a href="https://forum-zh.obsidian.md/">ob中文论坛</a></p></blockquote><hr><h1 id="笔记目录"><a href="#笔记目录" class="headerlink" title="笔记目录"></a>笔记目录</h1><ul><li><a href="https://blog.csdn.net/weixin_51684355/article/details/126064886?spm=1001.2014.3001.5502">Obsidian学习从0到1 —— 基本介绍</a></li><li><a href="https://editor.csdn.net/md/?articleId=126064933">Obsidian学习从0到1 —— MARKDOWN</a></li><li><a href="https://blog.csdn.net/weixin_51684355/article/details/126084867?spm=1001.2014.3001.5502">Obsidian学习从0到1 —— 双链（重点）</a></li><li><a href="https://editor.csdn.net/md/?articleId=126086160">Obsidian学习从0到1 —— 使用技巧</a></li><li><a href="https://blog.csdn.net/weixin_51684355/article/details/126089616?spm=1001.2014.3001.5502">Obsidian学习从0到1 —— 插件（上）</a></li><li><a href="https://blog.csdn.net/weixin_51684355/article/details/126089632?spm=1001.2014.3001.5502">Obsidian学习从0到1 —— 插件（下）</a></li><li><a href="https://blog.csdn.net/weixin_51684355/article/details/126091340?spm=1001.2014.3001.5502">Obsidian学习从0到1 —— 搜索和查询</a></li><li><a href="https://blog.csdn.net/weixin_51684355/article/details/126092705?spm=1001.2014.3001.5502">Obsidian学习从0到1 —— Dataview</a></li></ul><p>随视频课程持续更新……………<br>感谢支持</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;本篇文章学习视频来源：             &lt;a href=&quot;https://www.bilibili.com/video/</summary>
+      
+    
+    
+    
+    <category term="Obsidian" scheme="https://yyzqlqc.github.io/categories/Obsidian/"/>
+    
+    
+    <category term="工具教程" scheme="https://yyzqlqc.github.io/tags/%E5%B7%A5%E5%85%B7%E6%95%99%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>树莓派PICO入门教程</title>
@@ -36,31 +61,6 @@
     
     <category term="树莓派 - 树莓派" scheme="https://yyzqlqc.github.io/categories/%E6%A0%91%E8%8E%93%E6%B4%BE-%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>保姆级Obsidian学习教程【超完整，小白必备】</title>
-    <link href="https://yyzqlqc.github.io/post/27fb5d91.html"/>
-    <id>https://yyzqlqc.github.io/post/27fb5d91.html</id>
-    <published>2022-12-26T16:06:24.361Z</published>
-    <updated>2022-12-26T16:11:26.843Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ul><li>本篇文章学习视频来源：             <a href="https://www.bilibili.com/video/BV1MF411W7eD/?spm_id_from=333.788&amp;vd_source=ee1eea60088211b9fa51cf93a31423da">沙牛obsidian优质课程</a></li><li>学       习         软        件：                      <a href="https://obsidian.md/">obsidian</a></li><li>课   程   对   应   资    源：                      <a href="https://pan.sandox.top/s/O3pIW?path=/">云盘资源</a></li><li>说                                明：  Obsidian是基于<strong>Markdown文件</strong>的<strong>本地</strong>知识管理软件，并且开发者承诺Obsidian对于个人使用者<strong>永久免费</strong>。不同于云端笔记，ob在本地以文件夹的数据保存方式，更利于保存笔记，防止在云端的笔记丢失的情况，双链和丰富的插件功能能助使用者构建庞大的知识网络体系。</li></ul><hr><h1 id="学习网站："><a href="#学习网站：" class="headerlink" title="学习网站："></a>学习网站：</h1><blockquote><p><a href="https://github.com/Jackiexiao/obsidian">obsidian中文帮助手册</a></p></blockquote><blockquote><p><a href="https://help.obsidian.md/Advanced+topics/Community+plugins">官网帮助手册</a></p></blockquote><blockquote><p><a href="https://www.zybuluo.com/codeep/note/163962">Cmd Markdown 公式指导手册</a></p></blockquote><blockquote><p><a href="https://forum-zh.obsidian.md/">ob中文论坛</a></p></blockquote><hr><h1 id="笔记目录"><a href="#笔记目录" class="headerlink" title="笔记目录"></a>笔记目录</h1><ul><li><a href="https://blog.csdn.net/weixin_51684355/article/details/126064886?spm=1001.2014.3001.5502">Obsidian学习从0到1 —— 基本介绍</a></li><li><a href="https://editor.csdn.net/md/?articleId=126064933">Obsidian学习从0到1 —— MARKDOWN</a></li><li><a href="https://blog.csdn.net/weixin_51684355/article/details/126084867?spm=1001.2014.3001.5502">Obsidian学习从0到1 —— 双链（重点）</a></li><li><a href="https://editor.csdn.net/md/?articleId=126086160">Obsidian学习从0到1 —— 使用技巧</a></li><li><a href="https://blog.csdn.net/weixin_51684355/article/details/126089616?spm=1001.2014.3001.5502">Obsidian学习从0到1 —— 插件（上）</a></li><li><a href="https://blog.csdn.net/weixin_51684355/article/details/126089632?spm=1001.2014.3001.5502">Obsidian学习从0到1 —— 插件（下）</a></li><li><a href="https://blog.csdn.net/weixin_51684355/article/details/126091340?spm=1001.2014.3001.5502">Obsidian学习从0到1 —— 搜索和查询</a></li><li><a href="https://blog.csdn.net/weixin_51684355/article/details/126092705?spm=1001.2014.3001.5502">Obsidian学习从0到1 —— Dataview</a></li></ul><p>随视频课程持续更新……………<br>感谢支持</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;本篇文章学习视频来源：             &lt;a href=&quot;https://www.bilibili.com/video/</summary>
-      
-    
-    
-    
-    <category term="Obsidian" scheme="https://yyzqlqc.github.io/categories/Obsidian/"/>
-    
-    
-    <category term="工具教材" scheme="https://yyzqlqc.github.io/tags/%E5%B7%A5%E5%85%B7%E6%95%99%E6%9D%90/"/>
     
   </entry>
   
