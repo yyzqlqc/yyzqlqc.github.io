@@ -1,4 +1,5 @@
 https://yyzqlqc.github.io/link/index.html
+https://yyzqlqc.github.io/comments/index.html
 https://yyzqlqc.github.io/post/d66e415b.html
 https://yyzqlqc.github.io/post/443f0b3e.html
 https://yyzqlqc.github.io/post/4a17b156.html
@@ -10,7 +11,6 @@ https://yyzqlqc.github.io/contact/index.html
 https://yyzqlqc.github.io/categories/index.html
 https://yyzqlqc.github.io/about/index.html
 https://yyzqlqc.github.io/404/index.html
-https://yyzqlqc.github.io/comments/index.html
 https://yyzqlqc.github.io/
 https://yyzqlqc.github.io/tags/C/
 https://yyzqlqc.github.io/tags/hexo/
